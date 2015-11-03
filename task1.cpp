@@ -1,28 +1,45 @@
 #include <iostream>
 #include "task1.hpp"
+
 using namespace std;
 
-
 Date::Date( int d, int m , int y )
+		:day(d), month(m),year(y)
 {
-	day = d;
-	month = m;
-	year = y;
 	optimiz();
 }
-Date::Date ( Date const &d )
+
+Date::Date ( Date const &d ) 
+		: day 	(  	d.get_day()		),
+          month ( 	d.get_month()	),
+          year 	(	d.get_year()	) 
 {
-	day = d.get_day();
-	month = d.get_month();
-	year = d.get_year();
 	optimiz();
 }
+
+Date::Date ( Date &&d ) 
+		: day 	(  	move(d.get_day()) 	),
+          month ( 	move(d.get_month())	),
+          year 	(	move(d.get_year())	) 
+{
+	optimiz();
+}
+
 
 Date& Date::operator = ( Date const &d )
 {
 	day = d.get_day();
 	month = d.get_month();
 	year = d.get_year();
+	optimiz();
+	return *this;
+}
+
+Date& Date::operator = ( Date &&d )
+{
+    day  	= move(d.get_day());
+    month 	= move(d.get_month());
+    year 	= move(d.get_year());
 	optimiz();
 	return *this;
 }
