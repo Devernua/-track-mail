@@ -31,7 +31,7 @@ int main()
 
 	for_each(bm.begin(), bm.end(), foo);
 	cout<<endl;
-	reverse(bm.begin(), bm.end());
+	//reverse(bm.begin(), bm.end());
 
 	for_each(bm.begin(), bm.end(), foo);
 
